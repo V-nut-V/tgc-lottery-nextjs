@@ -1,5 +1,5 @@
 export function drawPrizeAndUpdate(originalPrizeArray) {
-  // 创建深拷贝，避免修改原始数据（可能是只读的）
+  // 创建深拷贝，避免修改原始数据
   const prizeArray = originalPrizeArray.map((p) => ({ ...p }));
 
   const totalQuantity = prizeArray.reduce(
