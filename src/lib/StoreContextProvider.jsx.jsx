@@ -32,7 +32,10 @@ const StoreContextProvider = ({ children }) => {
       },
     } = await client.query({
       query: gql`
-        query GetStore($filters: StoreFiltersInput) {
+        query GetStore(
+          $filters: StoreFiltersInput
+          $pagination: PaginationArg
+        ) {
           stores(filters: $filters) {
             documentId
             Store_ID
@@ -41,7 +44,7 @@ const StoreContextProvider = ({ children }) => {
             Min_Spent
             Background_URL
             Position
-            Prize {
+            Prize(pagination: $pagination) {
               Name
               Quantity
             }
@@ -54,8 +57,11 @@ const StoreContextProvider = ({ children }) => {
             eq: parseInt(id),
           },
         },
+        pagination: {
+          limit: 999,
+        },
       },
-      fetchPolicy: "network-only"  // 添加这一行，强制从网络获取
+      fetchPolicy: "network-only", // 添加这一行，强制从网络获取
     });
     if (!data) return undefined;
     setStore({
