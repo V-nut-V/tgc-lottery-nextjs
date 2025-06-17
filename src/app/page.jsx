@@ -27,13 +27,12 @@ export default function Home() {
   const [disabled, setDisabled] = useState(true);
   const finalPrizeRef = useRef(null);
   const [history, setHistory] = useState([]);
-  const { store, setStore, getStore, updateStore, getHistory, postHistory } = useContext(StoreContext);
-  
+  const { store, setStore, getStore, updateStore, getHistory, postHistory } =
+    useContext(StoreContext);
 
   useEffect(() => {
     if (!store.Store_ID) router.push("/store");
   }, []);
-
 
   const rolling = async (invoiceNumber) => {
     finalPrizeRef.current = null;
@@ -74,7 +73,12 @@ export default function Home() {
     }
 
     // 更新滚动文本 - 模拟抽奖过程 （同时返回停止滚动的控制器-手动）
-    rollPrizeText(store.Prize, () => finalPrizeRef.current, setRollingText, () => Stop(finalPrizeRef.current));
+    rollPrizeText(
+      store.Prize,
+      () => finalPrizeRef.current,
+      setRollingText,
+      () => Stop(finalPrizeRef.current)
+    );
 
     // 3. 根据Store信息进行随机抽奖
     const { selected, afterPrizes } = drawPrizeAndUpdate(storeData.Prize);
@@ -94,8 +98,8 @@ export default function Home() {
           Prize_Name: selected.Name,
           Spent: spent,
           Create_Date: new Date().toISOString(),
-        })
-      ])
+        }),
+      ]);
     } catch {
       Stop(
         "请再尝试一遍或联系开发人员[failed to updateStore or failed to createHistory.]"
@@ -186,17 +190,22 @@ export default function Home() {
         <span onDoubleClick={() => reset()} className="rolling-box">
           {rollingText}
         </span>
-        {spent &&
-          history?.length > 0 &&
-          Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent)) >= 1 && (
-            <span className="times-limit">
-              可抽奖次数：
-              {Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent))},
-              剩余抽奖次数：
-              {Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent)) -
-                history.length}
-            </span>
-          )}
+        {spent && (
+          <span className="times-limit">
+            可抽奖次数：
+            {Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent))}
+            {history?.length > 0 &&
+              Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent)) >=
+                1 &&
+              `
+                , 剩余抽奖次数：
+                ${
+                  Math.floor(parseFloat(spent) / parseFloat(store.Min_Spent)) -
+                  history.length
+                }`}
+          </span>
+        )}
+
         {invoiceNumber && history?.length > 0 && (
           <ul className="history-list">
             {history

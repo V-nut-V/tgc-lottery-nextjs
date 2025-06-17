@@ -21,7 +21,9 @@ body {
   height: 100%;
   font-family: "CabinetGrotesk", sans-serif;
   font-weight: 400;
-  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  background-size: cover;
+  background-repeat: no-repeat;
   /* background-color: var(--background-color); */
   color: var(--text-color);
 }

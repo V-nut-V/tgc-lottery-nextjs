@@ -9,6 +9,7 @@ export const StoreContext = createContext();
 const initialStoreState = {
   documentId: 0,
   Store_ID: 0,
+  Check_PIN: 0,
   Store_Name: "请输入门店ID",
   Background_URL: "",
   Prize: [],
@@ -39,6 +40,7 @@ const StoreContextProvider = ({ children }) => {
           stores(filters: $filters) {
             documentId
             Store_ID
+            Check_PIN
             Store_Name
             Dashboard_Title
             Min_Spent
@@ -67,6 +69,7 @@ const StoreContextProvider = ({ children }) => {
     setStore({
       documentId: data.documentId,
       Store_ID: data.Store_ID,
+      Check_PIN: data.Check_PIN,
       Store_Name: data.Store_Name,
       Background_URL: data.Background_URL,
       Prize: data.Prize,
@@ -86,6 +89,7 @@ const StoreContextProvider = ({ children }) => {
           updateStore(documentId: $documentId, data: $data) {
             documentId
             Store_ID
+            Check_PIN
             Store_Name
             Dashboard_Title
             Min_Spent
