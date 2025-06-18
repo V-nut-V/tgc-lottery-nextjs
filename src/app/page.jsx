@@ -20,7 +20,7 @@ const { Search } = Input;
 
 export default function Home() {
   const router = useRouter();
-  const [rollingText, setRollingText] = useState("请输入发票号码");
+  const [rollingText, setRollingText] = useState("请输入小票号码");
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [spent, setSpent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,7 +41,7 @@ export default function Home() {
     let currentHistory = [];
 
     if (!invoiceNumber) {
-      Stop("请输入发票号码");
+      Stop("请输入小票号码");
       return;
     }
     setRollingText("准备中...");
@@ -137,7 +137,7 @@ export default function Home() {
   };
 
   const reset = () => {
-    setRollingText("请输入发票号码");
+    setRollingText("请输入小票号码");
     setInvoiceNumber("");
     setSpent("");
     setDisabled(true);
@@ -179,7 +179,7 @@ export default function Home() {
             value={invoiceNumber}
             onChange={(e) => {
               setInvoiceNumber(e.target.value);
-              setRollingText("请输入发票号码");
+              setRollingText("请输入小票号码");
             }}
             onSearch={() => rolling(invoiceNumber)}
             enterButton={<FaDice fontSize={25} />}
