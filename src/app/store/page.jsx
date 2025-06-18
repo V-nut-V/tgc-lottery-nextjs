@@ -2,8 +2,9 @@
 import Link from "next/link";
 import { useState, useContext, useEffect, Fragment } from "react";
 import { StoreContainer } from "./index.style";
-import { Input, Space } from "antd";
+import { Input, Space, Slider } from "antd";
 import { StoreContext } from "@/lib/StoreContextProvider.jsx";
+import { SettingsContext } from "@/lib/SettingsContextProvider";
 import { BiSolidStore } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 
@@ -14,6 +15,7 @@ export default function Store() {
   const [checkPin, setCheckPin] = useState(0);
   const [inspect, setInspect] = useState(false);
   const { store, getStore } = useContext(StoreContext);
+  const { size, setSize } = useContext(SettingsContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export default function Store() {
         <Space.Compact>
           <Search
             addonBefore="ID"
-            style={{ width: "14rem" }}
+            style={{ width: "14rem", minWidth: "200px" }}
             value={id}
             onChange={(e) => setId(e.target.value)}
             onSearch={() => GetStore(id)}
@@ -54,6 +56,16 @@ export default function Store() {
         </Space.Compact>
       </div>
 
+      <Slider
+        style={{ width: "300px", marginTop: "20px" }}
+        defaultValue={size}
+        value={size}
+        min={50}
+        max={150}
+        trackBg="#000"
+        onChange={(value) => setSize(value)}
+      />
+
       <div className="prize-title">
         {store.Store_ID ? <h6>奖项</h6> : ""}
 
@@ -61,7 +73,7 @@ export default function Store() {
           <Space.Compact>
             <Search
               addonBefore="验证码"
-              style={{ width: "18rem" }}
+              style={{ width: "18rem", minWidth: "220px" }}
               value={checkPin}
               onChange={(e) => setCheckPin(e.target.value)}
               onSearch={() => {

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StyledComponentsRegistry from "@/lib/registry";
 import StoreContextProvider from "@/lib/StoreContextProvider.jsx";
+import SettingsContextProvider from "@/lib/SettingsContextProvider";
 import { ApolloWrapper } from "@/lib/ApolloWrapper.jsx";
 import { ConfigProvider } from "antd";
 
@@ -23,9 +24,16 @@ export const metadata = {
 const theme = {
   token: {
     fontSize: 16,
-    colorPrimary: "#54C8E8"
-  }
-}
+    colorPrimary: "#54C8E8",
+  },
+  components: {
+    Slider: {
+      trackBg: "#54C8E8",
+      railBg: "rgba(0,0,0,0.1)",
+      railHoverBg: "rgba(0,0,0,0.2)",
+    },
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -36,9 +44,11 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ApolloWrapper>
           <ConfigProvider theme={theme}>
-            <StoreContextProvider>
-              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-            </StoreContextProvider>
+            <SettingsContextProvider>
+              <StoreContextProvider>
+                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+              </StoreContextProvider>
+            </SettingsContextProvider>
           </ConfigProvider>
         </ApolloWrapper>
       </body>

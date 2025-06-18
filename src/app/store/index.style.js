@@ -7,7 +7,7 @@ export const StoreContainer = styled.div`
   align-items: center;
 
   h3 {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   span.note {
@@ -25,8 +25,8 @@ export const StoreContainer = styled.div`
   .prize-title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 3rem;
+    gap: 1rem;
+    margin-top: 1rem;
     margin-bottom: 0.5rem;
 
     h6 {

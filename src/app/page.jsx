@@ -27,8 +27,8 @@ export default function Home() {
   const [disabled, setDisabled] = useState(true);
   const finalPrizeRef = useRef(null);
   const [history, setHistory] = useState([]);
-  const { store, setStore, getStore, updateStore, getHistory, postHistory } =
-    useContext(StoreContext);
+  const { store, setStore, getStore, updateStore, getHistory, postHistory } = useContext(StoreContext);
+  
 
   useEffect(() => {
     if (!store.Store_ID) router.push("/store");
@@ -162,7 +162,7 @@ export default function Home() {
             }
             prefix="￥"
             placeholder="金额"
-            style={{ width: "13rem" }}
+            style={{ width: "13rem", minWidth: "150px" }}
             value={spent}
             onChange={(e) => spentChange(e.target.value)}
           />
@@ -174,7 +174,7 @@ export default function Home() {
                 color="#fff"
               />
             }
-            style={{ width: "25rem" }}
+            style={{ width: "25rem", minWidth: "250px" }}
             placeholder="小票号码"
             value={invoiceNumber}
             onChange={(e) => {
