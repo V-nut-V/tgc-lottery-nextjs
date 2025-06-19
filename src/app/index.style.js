@@ -44,11 +44,12 @@ export const LotteryContainer = styled.div`
   background-size: cover;
 
   .box {
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(0.6rem);
     -webkit-backdrop-filter: blur(1rem);
-    padding: 3rem 4rem;
-    border-radius: 2rem;
+    padding: 2.5rem 5rem;
+    padding-top: 4rem;
+    border-radius: 3rem;
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
@@ -57,16 +58,19 @@ export const LotteryContainer = styled.div`
     z-index: 1;
     height: fit-content;
     border: 0.1rem solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.25);
 
     ${({ position }) =>
-      position === "right" && `
+      position === "right" &&
+      `
         grid-column: 2/3;
         width: 100%;
         max-width: unset;
     `}
 
     ${({ position }) =>
-      position === "left" && `
+      position === "left" &&
+      `
         width: 100%;
         max-width: unset;
     `}
@@ -75,20 +79,24 @@ export const LotteryContainer = styled.div`
   .rolling-box {
     display: block;
     text-align: center;
-    min-height: 10rem;
+    min-height: 8rem;
     min-width: 10rem;
-    line-height: 10rem;
+    line-height: 8rem;
     font-size: 2.8rem;
+    font-weight: bold;
     background: #fff;
     margin: 2.5rem 0;
-    margin-bottom: 1rem;
-    border-radius: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 50rem;
     transition: all 0.3s;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.05);
   }
 
   span.times-limit {
     font-weight: bold;
+    color: white;
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
   }
 
   ul.history-list {
@@ -100,6 +108,8 @@ export const LotteryContainer = styled.div`
     width: fit-content;
     margin: 0 auto;
     padding: 0 1rem;
+    color: white;
+    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
   }
 
   .icon-store-settings {

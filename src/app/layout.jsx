@@ -27,6 +27,9 @@ const theme = {
     colorPrimary: "#54C8E8",
   },
   components: {
+    Input: {
+      addonBg: "#FFFFFF"
+    },
     Slider: {
       trackBg: "#54C8E8",
       railBg: "rgba(0,0,0,0.1)",

@@ -4,7 +4,6 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { StoreContext } from "@/lib/StoreContextProvider.jsx";
 import { Input, Space } from "antd";
-import { FaDice } from "react-icons/fa";
 import { PiCoinsFill } from "react-icons/pi";
 import { BiSolidStore } from "react-icons/bi";
 import {
@@ -20,7 +19,6 @@ const { Search } = Input;
 
 export default function Home() {
   const router = useRouter();
-  const [rollingText, setRollingText] = useState("请输入小票号码");
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [spent, setSpent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,6 +26,7 @@ export default function Home() {
   const finalPrizeRef = useRef(null);
   const [history, setHistory] = useState([]);
   const { store, setStore, getStore, updateStore, getHistory, postHistory } = useContext(StoreContext);
+  const [rollingText, setRollingText] = useState(store.Dashboard_Title);
   
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
     let currentHistory = [];
 
     if (!invoiceNumber) {
-      Stop("请输入小票号码");
+      Stop(store.Dashboard_Title);
       return;
     }
     setRollingText("准备中...");
@@ -137,7 +136,7 @@ export default function Home() {
   };
 
   const reset = () => {
-    setRollingText("请输入小票号码");
+    setRollingText(store.Dashboard_Title);
     setInvoiceNumber("");
     setSpent("");
     setDisabled(true);
@@ -150,14 +149,14 @@ export default function Home() {
       position={store.Position}
     >
       <div className="box">
-        <h1>{store.Dashboard_Title}</h1>
+        {/* <h1>{store.Dashboard_Title}</h1> */}
         <Space.Compact size="large">
           <Input
             addonBefore={
               <PiCoinsFill
-                fontSize={25}
+                fontSize={34}
                 style={{ paddingTop: "0.3rem" }}
-                color="#fff"
+                color="#54C8E8"
               />
             }
             prefix="￥"
@@ -169,9 +168,9 @@ export default function Home() {
           <Search
             addonBefore={
               <MdConfirmationNumber
-                fontSize={25}
+                fontSize={35}
                 style={{ paddingTop: "0.3rem" }}
-                color="#fff"
+                color="#54C8E8"
               />
             }
             style={{ width: "25rem", minWidth: "250px" }}
@@ -179,10 +178,10 @@ export default function Home() {
             value={invoiceNumber}
             onChange={(e) => {
               setInvoiceNumber(e.target.value);
-              setRollingText("请输入小票号码");
+              setRollingText(store.Dashboard_Title);
             }}
             onSearch={() => rolling(invoiceNumber)}
-            enterButton={<FaDice fontSize={25} />}
+            enterButton="点击抽奖"
             loading={loading}
             disabled={disabled}
           />
