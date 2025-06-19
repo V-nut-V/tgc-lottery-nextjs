@@ -6,6 +6,8 @@ import { StoreContext } from "@/lib/StoreContextProvider.jsx";
 import { Input, Space } from "antd";
 import { PiCoinsFill } from "react-icons/pi";
 import { BiSolidStore } from "react-icons/bi";
+import { IoPricetagsSharp } from "react-icons/io5";
+import { IoIosPricetag } from "react-icons/io";
 import {
   drawPrizeAndUpdate,
   rollPrizeText,
@@ -153,8 +155,8 @@ export default function Home() {
         <Space.Compact size="large">
           <Input
             addonBefore={
-              <PiCoinsFill
-                fontSize={34}
+              <IoPricetagsSharp
+                fontSize={30}
                 style={{ paddingTop: "0.3rem" }}
                 color="#54C8E8"
               />
@@ -168,7 +170,7 @@ export default function Home() {
           <Search
             addonBefore={
               <MdConfirmationNumber
-                fontSize={35}
+                fontSize={32}
                 style={{ paddingTop: "0.3rem" }}
                 color="#54C8E8"
               />
