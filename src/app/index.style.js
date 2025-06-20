@@ -83,18 +83,17 @@ export const LotteryContainer = styled.div`
     min-width: 10rem;
     line-height: 8rem;
     font-size: 2.8rem;
-    font-weight: bold;
+    font-weight: 600;
     background: #fff;
     margin: 2.5rem 0;
     margin-bottom: 1.5rem;
     border-radius: 50rem;
     transition: all 0.3s;
-    /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); */
     box-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.05);
   }
 
   span.times-limit {
-    font-weight: bold;
+    font-weight: 500;
     color: white;
     text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
   }

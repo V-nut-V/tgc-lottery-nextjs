@@ -19,13 +19,17 @@ html {
 body {
   width: 100%;
   height: 100%;
-  font-family: "CabinetGrotesk", sans-serif;
+  font-family: "myFont", sans-serif;
   font-weight: 400;
   background: linear-gradient(to bottom, #e0f7fa, #ffffff);
   background-size: cover;
   background-repeat: no-repeat;
   /* background-color: var(--background-color); */
   color: var(--text-color);
+}
+
+input::placeholder {
+  font-family: "myFont"!important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -71,10 +75,6 @@ button {
   background-color: transparent;
   border: 0;
   cursor: pointer;
-}
-
-span {
-  font-family: "CabinetGrotesk", sans-serif;
 }
 
 

@@ -4,10 +4,8 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { StoreContext } from "@/lib/StoreContextProvider.jsx";
 import { Input, Space } from "antd";
-import { PiCoinsFill } from "react-icons/pi";
 import { BiSolidStore } from "react-icons/bi";
 import { IoPricetagsSharp } from "react-icons/io5";
-import { IoIosPricetag } from "react-icons/io";
 import {
   drawPrizeAndUpdate,
   rollPrizeText,
