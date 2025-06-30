@@ -108,7 +108,7 @@ export default function Store() {
           <span className="position">
             位置：
             {store.Position === "bottom" && "靠下 / bottom"}
-            {store.Position === "center" && "剧中 / center"}
+            {store.Position === "center" && "居中 / center"}
             {store.Position === "left" && "靠左 / left"}
             {store.Position === "right" && "靠右 / right"}
             {!store.Position && "-"}

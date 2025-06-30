@@ -8,31 +8,34 @@ export function drawPrizeAndUpdate(originalPrizeArray) {
   );
   if (totalQuantity === 0) return null;
 
-  const randomNum = Math.floor(Math.random() * totalQuantity) + 1;
-
-  let cumulative = 0;
-  let selectedPrize = null;
-
-  for (let prize of prizeArray) {
-    cumulative += prize.Quantity;
-    if (randomNum <= cumulative) {
-      prize.Quantity--;
-      selectedPrize = { ...prize, Quantity: 1 }; // 复制抽中的奖项（表示抽中1个）
-      break;
-    }
+  // 使用概率权重方式抽奖，避免遍历
+  const weights = new Float64Array(prizeArray.length);
+  weights[0] = prizeArray[0].Quantity / totalQuantity;
+  
+  for (let i = 1; i < prizeArray.length; i++) {
+    weights[i] = weights[i-1] + (prizeArray[i].Quantity / totalQuantity);
   }
 
-  return {
-    selected: selectedPrize,
-    afterPrizes: prizeArray,
-  };
+  const random = Math.random();
+  const selectedIndex = weights.findIndex(w => random <= w);
+  
+  if (selectedIndex !== -1) {
+    prizeArray[selectedIndex].Quantity--;
+    const selectedPrize = { ...prizeArray[selectedIndex], Quantity: 1 }; // 复制抽中的奖项（表示抽中1个）
+    return {
+      selected: selectedPrize,
+      afterPrizes: prizeArray,
+    };
+  }
+  return null;
 }
 
 export function rollPrizeText(prizeArray, getFinalPrizeFn, setRollingText, stopFn) {
   if (!Array.isArray(prizeArray)) {
     throw new Error("Invalid prizeArray passed to rollPrizeText");
   }
-  const names = prizeArray.map((p) => p.Name);
+  // 只取前10个奖品用于展示
+  const names = prizeArray.slice(0, 10).map((p) => p.Name);
   let index = 0;
   let rollingTimer = null;
   let checkingTimer = null;
