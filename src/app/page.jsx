@@ -163,7 +163,24 @@ export default function Home() {
             placeholder="金额"
             style={{ width: "13rem", minWidth: "150px" }}
             value={spent}
-            onChange={(e) => spentChange(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value === "NaN" || e.target.value === "") {
+                spentChange("");
+                return;
+              }
+              if (isNaN(e.target.value)) {
+                spentChange("");
+                alert("请输入有效的数字");
+                return;
+              }
+
+              if (parseFloat(e.target.value) > 99999) {
+                spentChange("");
+                alert("金额不能超过 99999 元");
+              } else {
+                spentChange(parseFloat(e.target.value));
+              }
+            }}
           />
           <Search
             addonBefore={
