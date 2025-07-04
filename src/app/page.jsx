@@ -95,7 +95,7 @@ export default function Home() {
           Store_Name: store.Store_Name,
           Store_ID: store.Store_ID,
           Prize_Name: selected.Name,
-          Spent: spent,
+          Spent: spent.toString(),
           Create_Date: new Date().toISOString(),
         }),
       ]);
@@ -178,7 +178,7 @@ export default function Home() {
                 spentChange("");
                 alert("金额不能超过 99999 元");
               } else {
-                spentChange(parseFloat(e.target.value));
+                spentChange(e.target.value);
               }
             }}
           />
