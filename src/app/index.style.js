@@ -94,7 +94,7 @@ export const LotteryContainer = styled.div`
 
   span.times-limit {
     font-weight: 500;
-    color: white;
+    color: #333;
     text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
   }
 
@@ -107,7 +107,7 @@ export const LotteryContainer = styled.div`
     width: fit-content;
     margin: 0 auto;
     padding: 0 1rem;
-    color: white;
+    color: #333;
     text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.3);
   }
 
