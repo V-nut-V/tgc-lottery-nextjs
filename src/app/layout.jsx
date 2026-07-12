@@ -74,7 +74,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={myFont.className}>
       <head>
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body>
         <ApolloWrapper>

@@ -6,22 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@apollo/client": "^3.13.8",
-    "@apollo/client-integration-nextjs": "^0.12.2",
+    "@apollo/client": "^4.0.0",
+    "@apollo/client-integration-nextjs": "^0.14.5",
     "antd": "^5.25.4",
     "dayjs": "^1.11.13",
-    "next": "15.3.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "react-icons": "^5.5.0",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.3"
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.2.10"
   }
 }
